@@ -1,65 +1,56 @@
 # Online Bookstore Database Project
 
 ## Overview
-This project consists of designing and implementing a database for an online bookstore. The database design follows best practices in terms of normalization and integrity enforcement, and the implementation includes a simple UI for CRUD operations on the Users table.
+This project is designed to manage the database of an online bookstore. It encompasses an Entity-Relationship Diagram (ERD) for data structure visualization, a fully normalized database schema for efficiency and integrity, and a simple web interface for performing CRUD operations on the database.
 
 ## Features
-- ER Diagram representing all entities, their relationships, and cardinalities.
-- Normalized database schema to avoid data redundancy and ensure data integrity.
-- Integrity constraints implemented via primary keys, foreign keys, unique constraints, and not-null constraints.
-- CRUD operations (Create, Read, Update, Delete) on the Users table through a simple Flask web application.
-- SQL code written with optimization and structure in mind.
-- Application architecture follows a clear structure for maintainability and scalability.
+- ER Diagram visually representing the database schema.
+- Normalized tables to minimize redundancy and ensure data integrity.
+- Implemented data integrity with primary and foreign keys, constraints, and indexes.
+- Functional CRUD operations for the Users table through a Flask application.
+- SQL queries optimized for performance.
+- Clear and maintainable application architecture.
 
 ## SQL Code
-All SQL code used in the project is found within the migration scripts and the Flask application. It is optimized for performance and structured for readability.
+SQL migration scripts and Flask application code contain optimized SQL statements.
 
 ## ER Diagram
-The ER diagram is included as `ERD.png` in the project directory. It clearly outlines the database schema with all necessary details.
+![ER Diagram](./screenshots_2nd_submission/ERD.png)
+
+The ER diagram illustrates the relationships and cardinalities between entities in the database.
 
 ## Normalization
-The database schema follows the rules of 3NF (Third Normal Form) to ensure that there are no transitive dependencies and the data is free from update anomalies.
+The database schema adheres to the Third Normal Form (3NF), eliminating redundancies and ensuring data integrity.
 
 ## Integrity Enforcement
-The database schema enforces integrity through:
-- Primary keys for entity uniqueness.
-- Foreign keys for referential integrity.
-- Unique constraints to avoid duplicate information.
-- Not-null constraints to ensure critical data is always present.
-
-## Isolation Level
-(Include this section only if your application requires transaction management.)
+Integrity is enforced with primary keys, foreign keys, unique constraints, and not-null constraints.
 
 ## Forms
-The Flask application provides simple yet functional forms for user interaction, ensuring robust data validation and proper error handling.
-
-## Reports
-(Include this section if your application provides data aggregation or reporting functionality.)
-
-## Presentation
-The project includes in-line comments within the SQL scripts and application code for clarity. Documentation provides a clear overview of the project and its architecture.
+The Flask application includes basic forms for user interactions, implementing robust data validation and error handling.
 
 ## Application Architecture
-The application follows a Model-View-Controller (MVC) architecture, separated into distinct layers for data management, business logic, and presentation. This separation allows for efficient data flow and easy maintenance.
+The project uses an MVC architecture, separating data management, business logic, and UI layers.
 
 ## Installation and Setup
-(Provide steps for setting up the project, including environment setup, database migrations, and running the Flask application.)
+Detailed steps for setting up the project can be found in the installation section below.
 
 ## Usage
-(Provide a guide on how to use the application, possibly with screenshots.)
+A usage guide is provided to help users interact with the application effectively.
 
 ## Requirements
 - Python 3.x
 - Flask
 - PyMySQL
-(Include any other dependencies that are in your `requirements.txt`)
+(Refer to `requirements.txt` for a full list of dependencies.)
 
 ## License
-(Include licensing information, if any.)
+[Include licensing information here.]
 
 ## Credits
-(Acknowledge any collaborators, third-party assets, or tutorials followed.)
+[Acknowledge collaborators, third-party assets, or references.]
 
 ---
 
-This README provides a comprehensive overview of the Online Bookstore Database Project, demonstrating adherence to the rubric's specifications and the objectives of the assignment.
+This README outlines the components and structure of the Online Bookstore Database Project, demonstrating how it meets the assignment's criteria.
+
+
