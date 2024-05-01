@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Update Book</h1>
+    <form action="{{ url_for('update_book', book_isbn=book.ISBN) }}" method="post">
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn" placeholder="ISBN" value="{{ book.ISBN }}" readonly><br>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" placeholder="Title" value="{{ book.Title }}" required><br>
+        <label for="publication_year">Publication Year:</label>
+        <input type="text" id="publication_year" name="publication_year" placeholder="Publication Year" value="{{ book.PublicationYear }}" required><br>
+
+        <!-- Authors Multiple Select -->
+        {% set book_author_ids = book.Authors.split(',') if book.Authors %}
+        <label for="authors">Authors:</label>
+        <select name="authors" id="authors" multiple>
+            {% for author in authors %}
+            <option value="{{ author.AuthorID }}" {% if author.AuthorID|string in book_author_ids %}selected{% endif %}>
+                {{ author.AuthorName }}
+            </option>
+            {% endfor %}
+        </select><br>
+
+        <!-- Categories Multiple Select -->
+        {% set book_category_ids = book.Categories.split(',') if book.Categories %}
+        <label for="categories">Categories:</label>
+        <select name="categories" id="categories" multiple>
+            {% for category in categories %}
+            <option value="{{ category.CategoryID }}" {% if category.CategoryID|string in book_category_ids %}selected{% endif %}>
+                {{ category.CategoryName }}
+            </option>
+            {% endfor %}
+        </select><br>
+
+        <!-- Average Rating Dropdown -->
+        <label for="average_rating">Average Rating:</label>
+        <select name="average_rating" id="average_rating">
+            {% for rating in ratings %}
+            <option value="{{ rating.RatingValue }}" {% if rating.RatingValue == book.AverageRating %}selected{% endif %}>
+                {{ rating.RatingValue }}
+            </option>
+            {% endfor %}
+        </select><br>
+
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>
