@@ -87,11 +87,15 @@ def create_book():
         isbn = request.form['isbn']
         title = request.form['title']
         publication_year = request.form['publication_year']
-        price = request.form['price']  # Ensure this field is included in your form
+        price = request.form['price']
 
-        # Attempt to handle authors and categories correctly
-        authors = request.form.getlist('authors')  # This should match <select multiple> in HTML
-        categories = request.form.getlist('categories')  # This should match <select multiple> in HTML
+        # Retrieve and validate authors and categories from the form
+        authors = request.form.getlist('authors')
+        categories = request.form.getlist('categories')
+
+        # Convert and filter out invalid entries
+        authors = [int(a) for a in authors if a.isdigit()]
+        categories = [int(c) for c in categories if c.isdigit()]
 
         conn = db_connection.cursor()
         try:
@@ -112,13 +116,14 @@ def create_book():
             conn.execute("COMMIT")
         except Exception as e:
             conn.execute("ROLLBACK")
+            print("Error: ", e)
             return f"An error occurred: {e}", 500
         finally:
             conn.close()
 
         return redirect(url_for('books'))
     else:
-        # Prepare data for the form on GET request
+        # Prepare form data for GET request
         conn = db_connection.cursor()
         conn.execute("SELECT AuthorID, AuthorName FROM Authors")
         authors = conn.fetchall()
@@ -127,6 +132,11 @@ def create_book():
         conn.close()
 
         return render_template('create_book.html', authors=authors, categories=categories)
+
+
+
+
+
 
 
 
@@ -191,6 +201,7 @@ def update_book(book_isbn):
         conn.close()
 
         return render_template('update_book.html', book=book, authors=authors, categories=categories, ratings=ratings)
+
 
 
 
